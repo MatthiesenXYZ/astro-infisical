@@ -1,6 +1,10 @@
 import { fileFactory } from "./fileFactory"
 
-export const secretsDTS = (secrets: [string, string][]) => {
+export const secretsDTS = (secrets: {
+    count: number;
+    map: Record<string, string>;
+    object: [string, string][];
+}) => {
     const DTSFile = fileFactory();
 
     // MAIN MODULE
@@ -9,7 +13,7 @@ export const secretsDTS = (secrets: [string, string][]) => {
     // SECRETS OBJECT
     DTSFile.addLines('/** Infisical Remote ENV Secrets List */\nexport const secrets: {');
 
-    for (const [key, value] of secrets) {
+    for (const [key, value] of secrets.object) {
         DTSFile.addLines(`    /** Infisical Remote ENV Variable - ${key} */\n    ${key}: ${typeof value};`);
     };
 
@@ -19,7 +23,7 @@ export const secretsDTS = (secrets: [string, string][]) => {
     DTSFile.addLines('export default secrets;');
 
     // INDIVIDUAL EXPORTS
-    for (const [key, value] of secrets) {
+    for (const [key, value] of secrets.object) {
         DTSFile.addLines(`/** Infisical Remote ENV Variable - ${key} */\nexport const ${key}: ${typeof value};`);
     };
 
