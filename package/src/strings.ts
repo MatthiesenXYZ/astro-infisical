@@ -7,5 +7,3 @@ export const strings = {
     createLogMessage: (count: number) => `${c.bold().green(`Fetched ${count} secrets from remote Infisical.`)}\n${c.bold("Available Secrets:")} ${c.italic().gray(`(Displayed as "${c.bold().yellow("Variable Name")}: ${c.bold().magenta("Type")}")`)}\n`,
     addSecretToMessage: (key: string, value: string) => `- ${c.bold().yellow(key)}: ${c.bold().magenta(typeof value)}\n`,
 }
-
-export default strings;
