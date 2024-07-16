@@ -1,0 +1,41 @@
+{
+  "name": "@matthiesenxyz/astro-infisical",
+  "version": "0.0.0",
+  "description": "",
+  "author": {
+    "name": "Adam Matthiesen",
+    "url": "https://matthiesen.xyz"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/matthiesenxyz/astro-infisical.git"
+  },
+  "license": "MIT",
+  "keywords": [
+    "astro",
+    "astro-integration",
+    "withastro"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "sideEffects": false,
+  "files": [
+    "src"
+  ],
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "type": "module",
+  "dependencies": {
+    "astro-integration-kit": "^0.14.0"
+  },
+  "peerDependencies": {
+    "astro": ">=4.11.5"
+  },
+  "devDependencies": {
+    "@types/node": "20.14.10",
+    "typescript": "^5.5.3",
+    "vite": "^5.3.3"
+  }
+}
