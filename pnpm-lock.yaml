@@ -29,12 +29,18 @@ importers:
 
   package:
     dependencies:
+      '@infisical/sdk':
+        specifier: ^2.2.3
+        version: 2.2.3
       astro:
         specifier: '>=4.11.5'
         version: 4.11.5(@types/node@20.14.10)(typescript@5.5.3)
       astro-integration-kit:
         specifier: ^0.14.0
         version: 0.14.0(astro@4.11.5)
+      kleur:
+        specifier: ^4.1.5
+        version: 4.1.5
     devDependencies:
       '@types/node':
         specifier: 20.14.10
@@ -980,6 +986,132 @@ packages:
     os: [win32]
     requiresBuild: true
     optional: true
+
+  /@infisical/sdk-android-arm-eabi@2.2.3:
+    resolution: {integrity: sha512-eDkrjgQ1CD1UaAIbRLv4clMy4iwiprH8uMnC31d8ABdlNyvYPiC3zgy+XPuxVefnCVT2NrqM5UsPKDAIdMeOag==}
+    engines: {node: '>= 10'}
+    cpu: [arm]
+    os: [android]
+    requiresBuild: true
+    dev: false
+    optional: true
+
+  /@infisical/sdk-android-arm64@2.2.3:
+    resolution: {integrity: sha512-9EAKO+MgcHyODDobGi3iwG5n207rH2PQ0XPaC6VSZp90oN5unSTmNWK7qbElbTSf+MwrsyOJT87QTXicatzCBw==}
+    engines: {node: '>= 10'}
+    cpu: [arm64]
+    os: [android]
+    requiresBuild: true
+    dev: false
+    optional: true
+
+  /@infisical/sdk-darwin-arm64@2.2.3:
+    resolution: {integrity: sha512-58qQA3hI9SUcRJQghiNQjt92HiWIRX1NVkWZsNN9HX6j5YaHC9hhUmJ7RopI768Bsh5jxwmyeEn9CXzFxIUA8Q==}
+    engines: {node: '>= 10'}
+    cpu: [arm64]
+    os: [darwin]
+    requiresBuild: true
+    dev: false
+    optional: true
+
+  /@infisical/sdk-darwin-x64@2.2.3:
+    resolution: {integrity: sha512-AyIBGJH/EcsJrpMDgQPL4lmDAqGywn2MKB0dsOnBBwJHLdxvzra4IA9ZQHockI7kSUKu5kSA5YTk6seZ5f/BIg==}
+    engines: {node: '>= 10'}
+    cpu: [x64]
+    os: [darwin]
+    requiresBuild: true
+    dev: false
+    optional: true
+
+  /@infisical/sdk-linux-arm-gnueabihf@2.2.3:
+    resolution: {integrity: sha512-sFGhXqckuVUPmqnFuZbX/NFlxpdAu/IHzGQKbPYsGjPnqxC+ZkCBvuyj1IpVIElL/j09pLVbMMWZv1vf+aaHmQ==}
+    engines: {node: '>= 10'}
+    cpu: [arm]
+    os: [linux]
+    requiresBuild: true
+    dev: false
+    optional: true
+
+  /@infisical/sdk-linux-arm64-gnu@2.2.3:
+    resolution: {integrity: sha512-ppXvRBVINN7DSMLIaM3syUkYXvDVsrO0OzVgQ9ti9yYcBPOJlzrIU2H/yiXXv/m8U58jCja275i5K5y1VdjuPw==}
+    engines: {node: '>= 10'}
+    cpu: [arm64]
+    os: [linux]
+    requiresBuild: true
+    dev: false
+    optional: true
+
+  /@infisical/sdk-linux-arm64-musl@2.2.3:
+    resolution: {integrity: sha512-/JouatsZb7KAbks682tHIRH5wMpGOoVCTBJjXNcnhV33bOxlyJ9G/UimgCYBpT9WuVhkRJKNXEQQdh7rsCsShA==}
+    engines: {node: '>= 10'}
+    cpu: [arm64]
+    os: [linux]
+    requiresBuild: true
+    dev: false
+    optional: true
+
+  /@infisical/sdk-linux-x64-gnu@2.2.3:
+    resolution: {integrity: sha512-YH3DrvDfjmArKLrvhV+2mqoE5mY3l9cwXivqtNlcPftH5TW1MQvVq9lJEb8wIEkCNNiFYyJ2Xf8tJQDkervlYQ==}
+    engines: {node: '>= 10'}
+    cpu: [x64]
+    os: [linux]
+    requiresBuild: true
+    dev: false
+    optional: true
+
+  /@infisical/sdk-linux-x64-musl@2.2.3:
+    resolution: {integrity: sha512-h0+14vwyigRi8aR/BfJ8LFZOJJOUa1p7fsyVUVWuTLsaDyo5l/HW4q+C3wYX2N9Jb3NyUev4lvu19WCs8W12iQ==}
+    engines: {node: '>= 10'}
+    cpu: [x64]
+    os: [linux]
+    requiresBuild: true
+    dev: false
+    optional: true
+
+  /@infisical/sdk-win32-arm64-msvc@2.2.3:
+    resolution: {integrity: sha512-o07IXCl66/6WYDtIdPef7KeQX9aJsdmJJCMYu6K7ez9EV+nNJR7nmuhe6jdlK16kVdyfJB5lXuefCe+hWVx+HA==}
+    engines: {node: '>= 10'}
+    cpu: [arm64]
+    os: [win32]
+    requiresBuild: true
+    dev: false
+    optional: true
+
+  /@infisical/sdk-win32-ia32-msvc@2.2.3:
+    resolution: {integrity: sha512-CXQK5N7YQ3RBVbKwx5HBGNM8LwV7/+hzN9py7C1Upv07XK0bmC6NvVrZVoYwSMDBIN3lCAy/cWASsNH+9Ve5uw==}
+    engines: {node: '>= 10'}
+    cpu: [ia32]
+    os: [win32]
+    requiresBuild: true
+    dev: false
+    optional: true
+
+  /@infisical/sdk-win32-x64-msvc@2.2.3:
+    resolution: {integrity: sha512-hBmKiKNQ3CK6I3Z1s+1Ix8kM2/ML5BiTRmM6EOP6iQBULMf1AmCoGzh6uO4l7gytcvixtC8Jp21+37rKjm4MLA==}
+    engines: {node: '>= 10'}
+    cpu: [x64]
+    os: [win32]
+    requiresBuild: true
+    dev: false
+    optional: true
+
+  /@infisical/sdk@2.2.3:
+    resolution: {integrity: sha512-UvJjOD0b3O4obdtEYh+++Pv7Jfj5qb0QMzEZrADDLQJH0bDswRgLCaCiZtvzkV6WJPw8EKM5CFyBuZOgvDLESQ==}
+    engines: {node: '>= 10'}
+    optionalDependencies:
+      '@infisical/sdk-android-arm-eabi': 2.2.3
+      '@infisical/sdk-android-arm64': 2.2.3
+      '@infisical/sdk-darwin-arm64': 2.2.3
+      '@infisical/sdk-darwin-x64': 2.2.3
+      '@infisical/sdk-linux-arm-gnueabihf': 2.2.3
+      '@infisical/sdk-linux-arm64-gnu': 2.2.3
+      '@infisical/sdk-linux-arm64-musl': 2.2.3
+      '@infisical/sdk-linux-x64-gnu': 2.2.3
+      '@infisical/sdk-linux-x64-musl': 2.2.3
+      '@infisical/sdk-win32-arm64-msvc': 2.2.3
+      '@infisical/sdk-win32-ia32-msvc': 2.2.3
+      '@infisical/sdk-win32-x64-msvc': 2.2.3
+    dev: false
 
   /@jridgewell/gen-mapping@0.3.5:
     resolution: {integrity: sha512-IzL8ZoEDIBRWEzlCcRhOaCupYyN5gdIK+Q6fbFdPDg6HqX6jpkItn7DFIpW9LQzXG6Df9sA7+OKnq0qlz/GaQg==}

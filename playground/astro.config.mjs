@@ -6,6 +6,7 @@ export default defineConfig({
 	site: 'http://localhost:4321',
 	integrations: [ 
 		astroInfisical({
+			siteUrl: 'https://infisical.matthiesen.dev',
 			verbose: true,
 		})
 	], 
