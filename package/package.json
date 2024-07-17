@@ -28,7 +28,7 @@
   },
   "type": "module",
   "dependencies": {
-    "@infisical/sdk": "^2.2.3",
+    "@infisical/sdk": "^2.2.5",
     "astro-integration-kit": "^0.14.0",
     "kleur": "^4.1.5"
   },
@@ -36,7 +36,7 @@
     "astro": ">=4.11.5"
   },
   "devDependencies": {
-    "@types/node": "20.14.10",
+    "@types/node": "20.14.11",
     "typescript": "^5.5.3",
     "vite": "^5.3.3"
   }
