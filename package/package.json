@@ -1,7 +1,7 @@
 {
   "name": "@matthiesenxyz/astro-infisical",
   "version": "0.0.0",
-  "description": "",
+  "description": "A simple integration for Infisical with Astro.",
   "author": {
     "name": "Adam Matthiesen",
     "url": "https://matthiesen.xyz"
