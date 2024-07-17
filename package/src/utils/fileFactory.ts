@@ -1,12 +1,12 @@
 export const fileFactory = () => {
-	let file = ""
+	let file = '';
 
 	return {
 		addLines(lines: string) {
-			file += lines
+			file += lines;
 		},
 		text() {
-			return file
-		}
-	}
-}
+			return file;
+		},
+	};
+};

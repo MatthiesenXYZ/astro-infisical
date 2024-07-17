@@ -11,18 +11,12 @@
     "url": "git+https://github.com/matthiesenxyz/astro-infisical.git"
   },
   "license": "MIT",
-  "keywords": [
-    "astro",
-    "astro-integration",
-    "withastro"
-  ],
+  "keywords": ["astro", "astro-integration", "withastro"],
   "publishConfig": {
     "access": "public"
   },
   "sideEffects": false,
-  "files": [
-    "src"
-  ],
+  "files": ["src"],
   "exports": {
     ".": "./src/index.ts"
   },

@@ -1,67 +1,85 @@
-import { addDts, addVirtualImports, defineIntegration } from "astro-integration-kit";
-import { Logger, LoggerOptsResolver, astroMode, infisicalClient, checkEnv, makeVariants, secretsDTS, buildSecretsModule, makeLogReport } from './utils';
-import { optionsSchema } from "./schema";
-import { loadEnv } from "vite";
-import { strings } from "./strings";
-import { name, envPrefix } from './consts';
-import { AstroError } from "astro/errors";
+import { addDts, addVirtualImports, defineIntegration } from 'astro-integration-kit';
+import { AstroError } from 'astro/errors';
+import { loadEnv } from 'vite';
+import { envPrefix, name } from './consts';
+import { optionsSchema } from './schema';
+import { strings } from './strings';
+import {
+	Logger,
+	LoggerOptsResolver,
+	astroMode,
+	buildSecretsModule,
+	checkEnv,
+	infisicalClient,
+	makeLogReport,
+	makeVariants,
+	secretsDTS,
+} from './utils';
 
 export default defineIntegration({
-    name, optionsSchema,
-    setup({ options: { siteUrl, secretsPath: path, attachToProcessEnv: processEnv, verbose }, name }) {
-        return {
-            hooks: {
-                "astro:config:setup": async (params) => {
-                    // Configure Logger
-                    const loggerOpts = await LoggerOptsResolver(params.logger, verbose);
-                
-                    // Log Start of Setup
-                    Logger(loggerOpts.logInfo, strings.setup);
+	name,
+	optionsSchema,
+	setup({
+		options: { siteUrl, secretsPath: path, attachToProcessEnv: processEnv, verbose },
+		name,
+	}) {
+		return {
+			hooks: {
+				'astro:config:setup': async (params) => {
+					// Configure Logger
+					const loggerOpts = await LoggerOptsResolver(params.logger, verbose);
 
-                    // Get Current mode
-                    const { mode: environment, console: consoleMode } = astroMode(params.command);
+					// Log Start of Setup
+					Logger(loggerOpts.logInfo, strings.setup);
 
-                    // Log Mode
-                    Logger(loggerOpts.logInfo, strings.mode(consoleMode));
+					// Get Current mode
+					const { mode: environment, console: consoleMode } = astroMode(params.command);
 
-                    // load variables
-                    const viteEnv = loadEnv('all', process.cwd(), envPrefix);
+					// Log Mode
+					Logger(loggerOpts.logInfo, strings.mode(consoleMode));
 
-                    // Check Environment Variables and get the ones we need
-                    const { CLIENT_ID: clientId, CLIENT_SECRET: clientSecret, PROJECT_ID: projectId } = checkEnv(viteEnv, Logger, loggerOpts);
+					// load variables
+					const viteEnv = loadEnv('all', process.cwd(), envPrefix);
 
-                    // Setup Infisical Client
-                    const infisicalAPI = infisicalClient({ siteUrl, clientId, clientSecret });
+					// Check Environment Variables and get the ones we need
+					const {
+						CLIENT_ID: clientId,
+						CLIENT_SECRET: clientSecret,
+						PROJECT_ID: projectId,
+					} = checkEnv(viteEnv, Logger, loggerOpts);
 
-                    // Fetch Secrets
-                    const infisicalSecrets = await infisicalAPI
-                        .getSecrets({ environment, projectId, path, processEnv })
-                        .catch((err) => {
-                            if (err instanceof Error) {
-                                Logger(loggerOpts.logError, err.message);
-                                throw new AstroError(err.message);
-                            }
+					// Setup Infisical Client
+					const infisicalAPI = infisicalClient({ siteUrl, clientId, clientSecret });
 
-                            Logger(loggerOpts.logError, err);
-                            throw new AstroError(err);
-                        });
+					// Fetch Secrets
+					const infisicalSecrets = await infisicalAPI
+						.getSecrets({ environment, projectId, path, processEnv })
+						.catch((err) => {
+							if (err instanceof Error) {
+								Logger(loggerOpts.logError, err.message);
+								throw new AstroError(err.message);
+							}
 
-                    // Log Connection
-                    Logger(loggerOpts.logInfo, strings.connected(siteUrl));
+							Logger(loggerOpts.logError, err);
+							throw new AstroError(err);
+						});
 
-                    // Create Variants
-                    const secrets = makeVariants(infisicalSecrets);
+					// Log Connection
+					Logger(loggerOpts.logInfo, strings.connected(siteUrl));
 
-                    // Log Secrets
-                    Logger(loggerOpts.logInfo, makeLogReport(secrets));
+					// Create Variants
+					const secrets = makeVariants(infisicalSecrets);
 
-                    // Add DTS File
-                    addDts(params, { name, content: secretsDTS(secrets) });
+					// Log Secrets
+					Logger(loggerOpts.logInfo, makeLogReport(secrets));
 
-                    // Add Virtual Imports
-                    addVirtualImports(params, { name, imports: buildSecretsModule(secrets) });
-                }
-            }
-        }
-    }
+					// Add DTS File
+					addDts(params, { name, content: secretsDTS(secrets) });
+
+					// Add Virtual Imports
+					addVirtualImports(params, { name, imports: buildSecretsModule(secrets) });
+				},
+			},
+		};
+	},
 });

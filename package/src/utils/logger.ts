@@ -1,21 +1,21 @@
-import type { AstroIntegrationLogger } from "astro";
+import type { AstroIntegrationLogger } from 'astro';
 
 export type LoggerOpts = {
-	logger: AstroIntegrationLogger,
-	verbose: boolean,
-	type: 'info' | 'warn' | 'error' | 'debug',
+	logger: AstroIntegrationLogger;
+	verbose: boolean;
+	type: 'info' | 'warn' | 'error' | 'debug';
 };
 
 export type LoggerOptsResolverResponse = {
-	logInfo: LoggerOpts,
-	logWarn: LoggerOpts,
-	logError: LoggerOpts,
-	logDebug: LoggerOpts,
+	logInfo: LoggerOpts;
+	logWarn: LoggerOpts;
+	logError: LoggerOpts;
+	logDebug: LoggerOpts;
 };
 
 export const LoggerOptsResolver = async (
 	logger: AstroIntegrationLogger,
-	verbose: boolean,
+	verbose: boolean
 ): Promise<LoggerOptsResolverResponse> => {
 	const logInfo: LoggerOpts = { logger, verbose, type: 'info' };
 	const logWarn: LoggerOpts = { logger, verbose, type: 'warn' };
@@ -23,12 +23,9 @@ export const LoggerOptsResolver = async (
 	const logDebug: LoggerOpts = { logger, verbose, type: 'debug' };
 
 	return { logInfo, logWarn, logError, logDebug };
-}
+};
 
-export const Logger = async (
-	opts: LoggerOpts,
-	message: string
-) => {
+export const Logger = async (opts: LoggerOpts, message: string) => {
 	if (opts.verbose) {
 		if (opts.type === 'info') {
 			opts.logger.info(message);
@@ -49,4 +46,4 @@ export const Logger = async (
 			opts.logger.debug(message);
 		}
 	}
-}
+};

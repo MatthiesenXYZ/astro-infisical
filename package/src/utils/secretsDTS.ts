@@ -1,34 +1,38 @@
-import { fileFactory } from "./fileFactory"
+import { fileFactory } from './fileFactory';
 
 export const secretsDTS = (secrets: {
-    count: number;
-    map: Record<string, string>;
-    object: [string, string][];
+	count: number;
+	map: Record<string, string>;
+	object: [string, string][];
 }) => {
-    const DTSFile = fileFactory();
+	const DTSFile = fileFactory();
 
-    // MAIN MODULE
-    DTSFile.addLines(`declare module "astro-infisical:env" {`);
+	// MAIN MODULE
+	DTSFile.addLines(`declare module "astro-infisical:env" {`);
 
-    // SECRETS OBJECT
-    DTSFile.addLines('/** Infisical Remote ENV Secrets List */\nexport const secrets: {');
+	// SECRETS OBJECT
+	DTSFile.addLines('/** Infisical Remote ENV Secrets List */\nexport const secrets: {');
 
-    for (const [key, value] of secrets.object) {
-        DTSFile.addLines(`    /** Infisical Remote ENV Variable - ${key} */\n    ${key}: ${typeof value};`);
-    };
+	for (const [key, value] of secrets.object) {
+		DTSFile.addLines(
+			`    /** Infisical Remote ENV Variable - ${key} */\n    ${key}: ${typeof value};`
+		);
+	}
 
-    DTSFile.addLines('};');
+	DTSFile.addLines('};');
 
-    // DEFAULT EXPORT
-    DTSFile.addLines('export default secrets;');
+	// DEFAULT EXPORT
+	DTSFile.addLines('export default secrets;');
 
-    // INDIVIDUAL EXPORTS
-    for (const [key, value] of secrets.object) {
-        DTSFile.addLines(`/** Infisical Remote ENV Variable - ${key} */\nexport const ${key}: ${typeof value};`);
-    };
+	// INDIVIDUAL EXPORTS
+	for (const [key, value] of secrets.object) {
+		DTSFile.addLines(
+			`/** Infisical Remote ENV Variable - ${key} */\nexport const ${key}: ${typeof value};`
+		);
+	}
 
-    // END MODULE
-    DTSFile.addLines('}');
+	// END MODULE
+	DTSFile.addLines('}');
 
-    return DTSFile.text();
-}
+	return DTSFile.text();
+};
