@@ -8,6 +8,7 @@ export default defineConfig({
 		astroInfisical({
 			siteUrl: 'https://infisical.matthiesen.dev',
 			verbose: true,
+			attachToProcessEnv: true,
 		})
 	], 
 });
