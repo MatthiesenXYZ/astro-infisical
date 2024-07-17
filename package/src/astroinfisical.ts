@@ -4,6 +4,7 @@ import { optionsSchema } from "./schema";
 import { loadEnv } from "vite";
 import { strings } from "./strings";
 import { name, envPrefix } from './consts';
+import { AstroError } from "astro/errors";
 
 export default defineIntegration({
     name, optionsSchema,
@@ -33,7 +34,17 @@ export default defineIntegration({
                     const infisicalAPI = infisicalClient({ siteUrl, clientId, clientSecret });
 
                     // Fetch Secrets
-                    const infisicalSecrets = await infisicalAPI.getSecrets({ environment, projectId, path, processEnv });
+                    const infisicalSecrets = await infisicalAPI
+                        .getSecrets({ environment, projectId, path, processEnv })
+                        .catch((err) => {
+                            if (err instanceof Error) {
+                                Logger(loggerOpts.logError, err.message);
+                                throw new AstroError(err.message);
+                            }
+
+                            Logger(loggerOpts.logError, err);
+                            throw new AstroError(err);
+                        });
 
                     // Log Connection
                     Logger(loggerOpts.logInfo, strings.connected(siteUrl));
