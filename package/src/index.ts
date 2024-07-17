@@ -2,13 +2,29 @@ import astroIntegration from "./astroinfisical";
 import type { AstroInfisicalOptions } from "./schema";
 
 /**
- * ## Astro-Infisical
+ * # Astro-Infisical
  * 
  * A simple integration for Infisical with Astro.
  * 
- * ### Usage
+ * ---
  * 
- * #### Basic Usage
+ * ## Requirements:
+ * 
+ * This integration requires the following environment variables from your Infisical Service:
+ * 
+ * ### '.env' File
+ * 
+ * ```bash
+ * # Infisical Project ID
+ * INFISICAL_PROJECT_ID=infisical-project-id
+ * # Infisical Universal Auth ClientID & ClientSecret
+ * INFISICAL_CLIENT_ID=infisical-client-id
+ * INFISICAL_CLIENT_SECRET=infisical-client-secret
+ * ```
+ * 
+ * ---
+ * 
+ * ## Basic Usage:
  * 
  * Configure the integration in your Astro config file.
  * 
@@ -19,7 +35,8 @@ import type { AstroInfisicalOptions } from "./schema";
  * export default defineConfig({
  *    integrations: [
  *       astroInfisical({
- *          siteUrl: "https://app.infisical.com", // Optional (For Self-Hosted Infisical) - Default shown
+ *          // Optional (For Self-Hosted Infisical) - Default shown
+ *          siteUrl: "https://app.infisical.com", 
  *       }), 
  *       ...otherIntegrations
  *    ],
@@ -29,13 +46,17 @@ import type { AstroInfisicalOptions } from "./schema";
  * Then you can access your secrets like so:
  * 
  * ```ts
- * import secrets from "astro-infisical:env"; // import all secrets as an object
- * import { SECRET_NAME_SECOND } from "astro-infisical:env"; // import a single secret
+ * // import all secrets as an object
+ * import secrets from "astro-infisical:env"; 
+ * // import a single secret
+ * import { SECRET_NAME_SECOND } from "astro-infisical:env";
  * 
  * console.log("First Secret: " + secrets.SECRET_NAME_FIRST, ", Second Secret: " + SECRET_NAME_SECOND);
  * ```
  * 
- * #### Advanced Usage (Use ProcessENV for NodeJS)
+ * ---
+ * 
+ * ## Advanced Usage (Use ProcessENV for NodeJS)
  * 
  * Configure the integration in your Astro config file with processENV Injection
  * 
@@ -46,7 +67,8 @@ import type { AstroInfisicalOptions } from "./schema";
  * export default defineConfig({
  *    integrations: [
  *       astroInfisical({
- *          siteUrl: "https://app.infisical.com", // Optional (For Self-Hosted Infisical) - Default shown
+ *          // Optional (For Self-Hosted Infisical) - Default shown
+ *          siteUrl: "https://app.infisical.com", 
  *          attachToProcessEnv: true,
  *       }), 
  *       ...otherIntegrations
