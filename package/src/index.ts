@@ -13,7 +13,7 @@ import type { AstroInfisicalOptions } from "./schema";
  * Configure the integration in your Astro config file.
  * 
  * ```ts
- * import astroInfisical from "astro-infisical";
+ * import astroInfisical from "@matthiesenxyz/astro-infisical";
  * import defineConfig from "astro/config";
  * 
  * export default defineConfig({
@@ -40,7 +40,7 @@ import type { AstroInfisicalOptions } from "./schema";
  * Configure the integration in your Astro config file with processENV Injection
  * 
  * ```ts
- * import astroInfisical from "astro-infisical";
+ * import astroInfisical from "@matthiesenxyz/astro-infisical";
  * import defineConfig from "astro/config";
  * 
  * export default defineConfig({
