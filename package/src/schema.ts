@@ -1,19 +1,19 @@
-import { z } from 'astro/zod';
+import { zodBoolean, zodObject, zodString, type zodInfer } from "./utils/zod";
 
-export const astroInfisicalOptionsSchema = z
-	.object({
+
+export const astroInfisicalOptionsSchema = zodObject({
 		/**
 		 * siteURL - Your self-hosted absolute site URL including the protocol (e.g. https://app.infisical.com)
 		 *
 		 * @default "https://app.infisical.com"
 		 */
-		siteUrl: z.string().optional().default('https://app.infisical.com'),
+		siteUrl: zodString('https://app.infisical.com'),
 		/**
 		 * secretsPath - The path from where secrets should be fetched from.
 		 *
 		 * @default "/"
 		 */
-		secretsPath: z.string().optional().default('/'),
+		secretsPath: zodString('/'),
 		/**
 		 * attachToProcessEnv - Attach secrets to the process.env object
 		 *
@@ -21,15 +21,13 @@ export const astroInfisicalOptionsSchema = z
 		 *
 		 * @default false
 		 */
-		attachToProcessEnv: z.boolean().optional().default(false),
+		attachToProcessEnv: zodBoolean(false),
 		/**
 		 * Enable verbose logging
 		 */
-		verbose: z.boolean().optional().default(false),
-	})
-	.optional()
-	.default({});
+		verbose: zodBoolean(false),
+	});
 
 export const optionsSchema = astroInfisicalOptionsSchema;
 
-export type AstroInfisicalOptions = z.infer<typeof astroInfisicalOptionsSchema>;
+export type AstroInfisicalOptions = zodInfer<typeof astroInfisicalOptionsSchema>;
