@@ -1,11 +1,21 @@
 import { InfisicalClient } from '@infisical/sdk';
 
+/**
+ * Infisical Client
+ *
+ * This function takes the Infisical client options and returns a new Infisical client.
+ */
 export const infisicalClient = (clientOpts: {
 	siteUrl: string;
 	clientId: string;
 	clientSecret: string;
 }) => {
 	return {
+		/**
+		 * Infisical Client Factory
+		 *
+		 * @returns Infisical Client
+		 */
 		makeClient: () =>
 			new InfisicalClient({
 				siteUrl: clientOpts.siteUrl,
@@ -16,6 +26,9 @@ export const infisicalClient = (clientOpts: {
 					},
 				},
 			}),
+		/**
+		 * Get Infisical Remote Secrets using the Infisical Client Factory
+		 */
 		getSecrets: async (secretOpts: {
 			environment: string;
 			projectId: string;

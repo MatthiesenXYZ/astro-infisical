@@ -1,5 +1,8 @@
 import { strings } from '../strings';
 
+/**
+ * Create a log message for the secrets fetched from Infisical
+ */
 export const makeLogReport = (secrets: {
 	count: number;
 	map: Record<string, string>;

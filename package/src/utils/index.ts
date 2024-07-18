@@ -14,9 +14,9 @@ export { makeLogReport } from './makeLogReport';
 export { makeVariants } from './makeVariants';
 export { secretsDTS } from './secretsDTS';
 export { npmUpdateCheck } from './versionCheck';
-export { 
-	zodBoolean, 
-	zodObject, 
-	zodString, 
-	type zodInfer 
+export {
+	zodBoolean,
+	zodObject,
+	zodString,
+	type zodInfer,
 } from './zod';

@@ -1,3 +1,6 @@
+/**
+ * Factory function to create a file
+ */
 export const fileFactory = () => {
 	let file = '';
 

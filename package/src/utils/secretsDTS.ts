@@ -1,5 +1,10 @@
 import { fileFactory } from './fileFactory';
 
+/**
+ * Generate a TypeScript declaration file for the secrets object
+ * @param secrets - The secrets object
+ * @returns The TypeScript declaration file
+ */
 export const secretsDTS = (secrets: {
 	count: number;
 	map: Record<string, string>;

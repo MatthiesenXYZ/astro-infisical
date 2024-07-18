@@ -1,11 +1,17 @@
 import type { AstroIntegrationLogger } from 'astro';
 
+/**
+ * Logger Options
+ */
 export type LoggerOpts = {
 	logger: AstroIntegrationLogger;
 	verbose: boolean;
 	type: 'info' | 'warn' | 'error' | 'debug';
 };
 
+/**
+ * Logger Options Resolver Response
+ */
 export type LoggerOptsResolverResponse = {
 	logInfo: LoggerOpts;
 	logWarn: LoggerOpts;
@@ -13,6 +19,12 @@ export type LoggerOptsResolverResponse = {
 	logDebug: LoggerOpts;
 };
 
+/**
+ * Logger Options Resolver
+ * @param logger - The Astro logger
+ * @param verbose - The verbose flag
+ * @returns The logger options
+ */
 export const LoggerOptsResolver = async (
 	logger: AstroIntegrationLogger,
 	verbose: boolean
@@ -25,6 +37,11 @@ export const LoggerOptsResolver = async (
 	return { logInfo, logWarn, logError, logDebug };
 };
 
+/**
+ * Logger
+ * @param opts - The logger options
+ * @param message - The message to log
+ */
 export const Logger = async (opts: LoggerOpts, message: string) => {
 	if (opts.verbose) {
 		if (opts.type === 'info') {

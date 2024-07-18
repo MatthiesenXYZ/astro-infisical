@@ -28,7 +28,7 @@
     "semver": "^7.6.3"
   },
   "peerDependencies": {
-    "astro": ">=4.11.5"
+    "astro": ">=4.11.6"
   },
   "devDependencies": {
     "@types/node": "20.14.11",

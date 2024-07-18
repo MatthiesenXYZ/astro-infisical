@@ -1,3 +1,6 @@
+/**
+ * Get the Astro mode based on the command used to launch astro
+ */
 export const astroMode = (command: 'dev' | 'build' | 'preview') => {
 	switch (command) {
 		case 'dev':
@@ -12,8 +15,8 @@ export const astroMode = (command: 'dev' | 'build' | 'preview') => {
 			};
 		case 'preview':
 			return {
-				console: 'Preview',
-				mode: 'preview',
+				console: 'Staging',
+				mode: 'staging',
 			};
 	}
 };

@@ -1,6 +1,13 @@
 import { AstroError } from 'astro/errors';
 import type { LoggerOpts, LoggerOptsResolverResponse } from './logger';
 
+/**
+ * Check if the required environment variables are set
+ * @param viteEnv - The Vite environment variables from `loadEnv()`
+ * @param Logger - The logger function
+ * @param loggerOpts - The logger options
+ * @returns The required environment variables
+ */
 export function checkEnv(
 	viteEnv: Record<string, string>,
 	Logger: (opts: LoggerOpts, message: string) => Promise<void>,

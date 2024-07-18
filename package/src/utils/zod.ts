@@ -1,9 +1,19 @@
-import { z, type ZodRawShape, type ZodType } from 'astro/zod';
+import { type ZodRawShape, type ZodTypeAny, type baseObjectInputType, z } from 'astro/zod';
 
-const zodObject = (shape: ZodRawShape) => z.object(shape).optional().default({});
+/** Zod Object Maker */
+const zodObject = <T extends ZodRawShape>(shape: T) =>
+	z
+		.object(shape)
+		.optional()
+		.default(() => ({}) as { [K in keyof baseObjectInputType<T>]: baseObjectInputType<T>[K] });
+
+/** Zod String Maker */
 const zodString = (def: string) => z.string().optional().default(def);
-const zodBoolean = (def: boolean) => z.boolean().optional().default(def);
-// biome-ignore lint/suspicious/noExplicitAny: This is copied from z.infer
-type zodInfer<T extends ZodType<any, any, any>> = T['_output'];
 
-export { zodObject, zodString, zodBoolean, type zodInfer};
+/** Zod Boolean Maker */
+const zodBoolean = (def: boolean) => z.boolean().optional().default(def);
+
+/** Zod Infer */
+type zodInfer<T extends ZodTypeAny> = T['_output'];
+
+export { zodObject, zodString, zodBoolean, type zodInfer };

@@ -1,5 +1,8 @@
 import c from 'kleur';
 
+/**
+ * Strings used in the CLI for logging
+ */
 export const strings = {
 	setup: `Setting up ${c.bold().magenta('Infisical')}...`,
 	mode: (mode: string) => `Running in mode: ${c.bold().yellow(mode)}`,
