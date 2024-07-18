@@ -1,5 +1,7 @@
 # Astro-Infisical
 
+[![NPM Version](https://img.shields.io/npm/v/@matthiesenxyz/astro-infisical)](https://npm.im/@matthiesenxyz/astro-infisical)
+
 A simple integration for Infisical with Astro.
  
 ---
