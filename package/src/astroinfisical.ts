@@ -86,7 +86,7 @@ export default defineIntegration({
 
 					// Check for Updates
 					if (updateCheck) {
-						npmUpdateCheck(params, { name, currentVersion });
+						await npmUpdateCheck(params, { name, currentVersion });
 					}
 				},
 			},

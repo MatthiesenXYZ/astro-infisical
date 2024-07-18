@@ -1,39 +1,16 @@
-import * as http from 'node:http';
 import { defineUtility } from 'astro-integration-kit';
 import * as semver from 'semver';
+import packageJson from 'package-json';
+export {PackageNotFoundError, VersionNotFoundError} from 'package-json';
 
 /**
  * Fetch the latest version of a package from the npm registry
  * @param name - The name of the package to fetch the latest version for
  * @returns The latest version of the package
  */
-function fetchLatestVersion(name: string): Promise<string> {
-	return new Promise((resolve, reject) => {
-		const url = `http://registry.npmjs.org/${name}/latest`;
-
-		const request = http.get(url, (response) => {
-			let data = '';
-
-			response.on('data', (chunk) => {
-				data += chunk;
-			});
-
-			response.on('end', () => {
-				try {
-					const latestVersion = JSON.parse(data).version;
-					resolve(latestVersion);
-				} catch (error) {
-					reject(error);
-				}
-			});
-		});
-
-		request.on('error', (error) => {
-			reject(error);
-		});
-
-		request.end();
-	});
+async function fetchlatestVersion(packageName:string): Promise<string> {
+	const {version} = await packageJson(packageName.toLowerCase());
+	return version;
 }
 
 /**
@@ -53,7 +30,7 @@ export const npmUpdateCheck = defineUtility('astro:config:setup')(
 			const logger = params.logger.fork(`${opts.name} (UPDATE CHECK)`);
 
 			try {
-				const latestVersion = await fetchLatestVersion(opts.name);
+				const latestVersion = await fetchlatestVersion(opts.name);
 
 				const comparison = semver.compare(opts.currentVersion, latestVersion);
 
@@ -62,9 +39,9 @@ export const npmUpdateCheck = defineUtility('astro:config:setup')(
 						`A new version of ${opts.name} is available. Please update to ${latestVersion} using your favorite package manager.`
 					);
 				} else if (comparison === 0) {
-					logger.debug(`You are using the latest version of ${opts.name}`);
+					logger.info(`You are using the latest version of ${opts.name} (${opts.currentVersion})`);
 				} else {
-					logger.debug(`You are using a newer version of ${opts.name} than the latest release`);
+					logger.info(`You are using a newer version (${opts.currentVersion}) of ${opts.name} than the latest release (${latestVersion})`);
 				}
 			} catch (error) {
 				if (error instanceof Error) {
