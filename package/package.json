@@ -1,7 +1,7 @@
 {
   "name": "@matthiesenxyz/astro-infisical",
   "version": "0.0.0",
-  "description": "A simple integration for Infisical with Astro.",
+  "description": "Secure centralized secret management for Astro using Infisical",
   "author": {
     "name": "Adam Matthiesen",
     "url": "https://matthiesen.xyz"
@@ -11,7 +11,18 @@
     "url": "git+https://github.com/matthiesenxyz/astro-infisical.git"
   },
   "license": "MIT",
-  "keywords": ["astro", "astro-integration", "withastro"],
+  "keywords": [
+    "astro",
+    "astro-integration",
+    "withastro",
+    "infisical",
+    "infisical-sdk",
+    "astroenv",
+    "astro-env",
+    "environment",
+    "variables",
+    "env"
+  ],
   "publishConfig": {
     "access": "public"
   },
@@ -31,8 +42,8 @@
     "astro": ">=4.11.6"
   },
   "devDependencies": {
-    "@types/node": "20.14.11",
-    "@types/semver": "7.5.8",
+    "@types/node": "^20.14.11",
+    "@types/semver": "^7.5.8",
     "typescript": "^5.5.3",
     "vite": "^5.3.4"
   }
