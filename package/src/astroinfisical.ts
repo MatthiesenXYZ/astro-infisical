@@ -1,7 +1,8 @@
 import { addDts, addVirtualImports, defineIntegration } from 'astro-integration-kit';
+import { name as pkgName, version as currentVersion } from '../package.json';
 import { AstroError } from 'astro/errors';
 import { loadEnv } from 'vite';
-import { envPrefix, name } from './consts';
+import { envPrefix } from './consts';
 import { optionsSchema } from './schema';
 import { strings } from './strings';
 import {
@@ -14,10 +15,11 @@ import {
 	makeLogReport,
 	makeVariants,
 	secretsDTS,
+	npmUpdateCheck,
 } from './utils';
 
 export default defineIntegration({
-	name,
+	name: pkgName,
 	optionsSchema,
 	setup({
 		options: { siteUrl, secretsPath: path, attachToProcessEnv: processEnv, verbose },
@@ -78,6 +80,9 @@ export default defineIntegration({
 
 					// Add Virtual Imports
 					addVirtualImports(params, { name, imports: buildSecretsModule(secrets) });
+
+					// Check for Updates
+					npmUpdateCheck(params, { name, currentVersion });
 				},
 			},
 		};

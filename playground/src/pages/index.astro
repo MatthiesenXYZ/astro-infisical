@@ -1,15 +1,46 @@
 ---
 import secrets from 'astro-infisical:env';
-import { TEST, TEST2 } from 'astro-infisical:env';
+import { TEST } from 'astro-infisical:env';
 
-console.log(secrets, TEST, secrets.TEST2);
+console.log("Check Infisical Virtual Module (default) - ", secrets);
+
+console.log("Check Infisical Virtual Module (named) - ", `TEST: ${TEST}`);
+
+console.log("Check process.env - ", process.env.TEST)
 ---
 
 <html>
     <head>
-        <title>My Astro Site</title>
+        <title>Astro-Infisical Playground</title>
     </head>
     <body>
         <h1>Hello World</h1>
+
+        {
+            secrets && (
+                <div>
+                    <h2>Infisical Virtual Module (default)</h2>
+                    <pre>{JSON.stringify(secrets, null, 2)}</pre>
+                </div>
+            )
+        }
+
+        {
+            TEST && (
+                <div>
+                    <h2>Infisical Virtual Module (named)</h2>
+                    <pre>{`TEST - ${TEST}`}</pre>
+                </div>
+            )
+        }
+
+        {
+            process.env.TEST && (
+                <div>
+                    <h2>process.env</h2>
+                    <pre>{`process.env.TEST - ${process.env.TEST}`}</pre>
+                </div>
+            )
+        }
     </body>
 </html>

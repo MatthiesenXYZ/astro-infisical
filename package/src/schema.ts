@@ -1,4 +1,4 @@
-import { zodBoolean, zodObject, zodString, type zodInfer } from "./utils/zod";
+import { zodBoolean, zodObject, zodString, type zodInfer } from "./utils";
 
 
 export const astroInfisicalOptionsSchema = zodObject({

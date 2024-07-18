@@ -24,14 +24,16 @@
   "dependencies": {
     "@infisical/sdk": "^2.2.5",
     "astro-integration-kit": "^0.14.0",
-    "kleur": "^4.1.5"
+    "kleur": "^4.1.5",
+    "semver": "^7.6.3"
   },
   "peerDependencies": {
     "astro": ">=4.11.5"
   },
   "devDependencies": {
     "@types/node": "20.14.11",
+    "@types/semver": "7.5.8",
     "typescript": "^5.5.3",
-    "vite": "^5.3.3"
+    "vite": "^5.3.4"
   }
 }
