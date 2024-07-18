@@ -1,6 +1,6 @@
 {
   "name": "@matthiesenxyz/astro-infisical",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Secure centralized secret management for Astro using Infisical",
   "author": {
     "name": "Adam Matthiesen",
@@ -27,7 +27,9 @@
     "access": "public"
   },
   "sideEffects": false,
-  "files": ["src"],
+  "files": [
+    "src"
+  ],
   "exports": {
     ".": "./src/index.ts"
   },
